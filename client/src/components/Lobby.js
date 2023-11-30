@@ -16,7 +16,7 @@ const LobbyPage = () => {
   const addCodeBlock = () => {
     const blockName = window.prompt('Enter the name for the new Code Block:');
     if (blockName) {
-      fetch(`${process.env.REACT_APP_API_URL}/addCodeBlocks`, {
+      fetch(`${process.env.REACT_APP_API_URL}/addCodeBlock`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code_block_title: blockName })
