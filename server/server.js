@@ -26,7 +26,11 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
 });
-app.use(cors());
+
+const corsOptions = {
+  origin: 'https://websockets-code-sharing.vercel.app',
+};
+app.use(cors(corsOptions));
 
 // Endpoint to add code block to database
 app.post('/addCodeBlock', async (req, res) => {

@@ -13,7 +13,7 @@ const CodeBlockPage = () => {
   const [canSend, setCanSend] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3001/getCodeBlock/${id}`)
+    fetch(`${process.env.REACT_APP_API_URL}/getCodeBlock/${id}`)
       .then(response => response.json())
       .then(data => setText(data.content))
       .catch(error => console.error('Error fetching code block:', error));
@@ -56,7 +56,7 @@ const CodeBlockPage = () => {
   };
 
   const saveCodeBlock = () => {
-    fetch(`http://localhost:3001/saveCodeBlock/${id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/saveCodeBlock/${id}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content: text })

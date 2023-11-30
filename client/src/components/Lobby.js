@@ -7,7 +7,7 @@ const LobbyPage = () => {
   const [codeBlocks, setCodeBlocks] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/getAllCodeBlocks')
+    fetch('${process.env.REACT_APP_API_URL}/getAllCodeBlocks')
       .then(response => response.json())
       .then(data => setCodeBlocks(data))
       .catch(error => console.error('Error fetching code blocks:', error));
@@ -16,7 +16,7 @@ const LobbyPage = () => {
   const addCodeBlock = () => {
     const blockName = window.prompt('Enter the name for the new Code Block:');
     if (blockName) {
-      fetch('http://localhost:3001/addCodeBlock', {
+      fetch('${process.env.REACT_APP_API_URL}/addCodeBlock', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code_block_title: blockName })
@@ -28,7 +28,7 @@ const LobbyPage = () => {
   };
 
   const deleteCodeBlock = (code_block_num) => {
-    fetch(`http://localhost:3001/deleteCodeBlock/${code_block_num}`, { method: 'DELETE' })
+    fetch(`${process.env.REACT_APP_API_URL}/deleteCodeBlock/${code_block_num}`, { method: 'DELETE' })
       .then(() => {
         const updatedCodeBlocks = codeBlocks.filter((block) => block.code_block_num !== code_block_num);
         setCodeBlocks(updatedCodeBlocks);
