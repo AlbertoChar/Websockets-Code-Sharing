@@ -7,7 +7,7 @@ const LobbyPage = () => {
   const [codeBlocks, setCodeBlocks] = useState([]);
 
   useEffect(() => {
-    fetch('${process.env.REACT_APP_API_URL}/getAllCodeBlocks')
+    fetch(`${process.env.REACT_APP_API_URL}/getAllCodeBlocks`)
       .then(response => response.json())
       .then(data => setCodeBlocks(data))
       .catch(error => console.error('Error fetching code blocks:', error));
@@ -16,7 +16,7 @@ const LobbyPage = () => {
   const addCodeBlock = () => {
     const blockName = window.prompt('Enter the name for the new Code Block:');
     if (blockName) {
-      fetch('${process.env.REACT_APP_API_URL}/addCodeBlock', {
+      fetch(`${process.env.REACT_APP_API_URL}/addCodeBlocks`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code_block_title: blockName })
