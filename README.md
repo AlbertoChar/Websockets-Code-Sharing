@@ -32,4 +32,8 @@ Express.js - Backend framework
 MongoDB - Database
 WebSocket - Used for real-time communication
 
-/
+## Code Blocks:
+
+Inside code blocks the first user to enter will be classified as the "mentor":
+He will have only reading rights for the content.
+Every user connecting to the specific code block after the mentor will be classified as "student", he will be able to edit the code in the block.
