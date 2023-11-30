@@ -20,7 +20,7 @@ const CodeBlockPage = () => {
   }, [id]);
 
   useEffect(() => {
-    const socket = new WebSocket(`process.env.REACT_APP_WS_URL/${id}`);
+    const socket = new WebSocket(`${process.env.REACT_APP_WS_URL}/${id}`);
 
     socket.addEventListener('message', (event) => {
       try {
