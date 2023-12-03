@@ -1,17 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Spinner from 'react-bootstrap/Spinner';
 import backgroundImage from '../assets/background.png';
 import '../App.css';
 
 const LobbyPage = () => {
   const [codeBlocks, setCodeBlocks] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/getAllCodeBlocks`)
       .then(response => response.json())
-      .then(data => setCodeBlocks(data))
-      .catch(error => console.error('Error fetching code blocks:', error));
+      .then(data => {
+        setCodeBlocks(data);
+        setIsLoading(false); // Set loading to false when data is fetched
+      })
+      .catch(error => {
+        console.error('Error fetching code blocks:', error);
+        setIsLoading(false); // Also set loading to false in case of error
+      });
   }, []);
+
+  if (isLoading) {
+    return <Spinner />; // Show loading spinner while data is being fetched
+  }
 
   const addCodeBlock = () => {
     const blockName = window.prompt('Enter the name for the new Code Block:');
