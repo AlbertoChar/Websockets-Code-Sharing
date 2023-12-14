@@ -1,4 +1,4 @@
-# moveo-code-assignment
+# Project for Moveo
 # Real-Time Collaborative Code Editor
 This repository hosts a full-stack web application enabling real-time collaborative code editing using web sockets. It's designed to bring developers together in a shared coding environment.
 

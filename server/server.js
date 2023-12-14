@@ -20,7 +20,7 @@ mongoose.connect(mongoDBUri, { useNewUrlParser: true, useUnifiedTopology: true }
   .catch(err => console.error('MongoDB connection error:', err));
 
 const wssMap = new Map();
-const firstUserConfirmationDelay = 100; // delay in milliseconds
+const firstUserConfirmationDelay = 100; // Delay in milliseconds
 app.use(express.json());
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
